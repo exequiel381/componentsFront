@@ -1,24 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Route,
+  HashRouter,
+  Routes,
+} from "react-router-dom";
+//import createHistory from "history/createBrowserHistory"; //Eliminar # de la ruta
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/home";
+import washington from "./images/Washington.png";
+import sanfer from "./images/SANFERNANDO.png";
+import santodom from "./images/santodomingo.png";
+import ipef from "./images/IPEF.png";
+import Prueba from "./pages/prueba";
+import { ThemeProvider } from "@mui/material/styles";
+import Theme from "./temaConfig";
+import { useState } from "react";
+
+const pagesForNav = [
+  {
+    title: "Washington",
+    image: washington,
+    route: "/Washington",
+  },
+  {
+    title: "SAN FERNANDO",
+    image: sanfer,
+    route: "/sanfer",
+  },
+  {
+    title: "SANTO DOMINGO",
+    image: santodom,
+    route: "/santodom",
+  },
+  {
+    title: "IPEF",
+    image: ipef,
+    route: "/Ipef",
+  },
+];
+const options = [
+  {
+    title: "option1",
+    route: "/option1",
+  },
+];
 
 function App() {
+  const [loged, setLoged] = useState(false);
+  const settings = loged ? ["Dashboard", "Logout"] : ["Register"];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={Theme}>
+      {/* <Router history={createHistory}> */}
+      <Router>
+        <Navbar
+          pages={pagesForNav}
+          settings={settings}
+          name="TITULO"
+          options={options}
+        ></Navbar>
+        <Routes>
+          <Route exact path="/" element={<Home></Home>}></Route>
+          <Route path="/prueba" element={<Prueba></Prueba>}></Route>
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
