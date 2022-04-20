@@ -1,14 +1,21 @@
 .Sidebar{
-    
+    height: 100%;
+    width: 1px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-color: #132240;
 }
 #nested-list-subheader{
-    font-size: 30px;
-    background-color: #132240;
+    font-size: 40px;
     font-weight: bolder;
     color : "white";
 }
 
 .title_Nav{
+    transition: 0.5s;
     font-size: 30px;
     background-color: #132240;
     font-weight: bolder;

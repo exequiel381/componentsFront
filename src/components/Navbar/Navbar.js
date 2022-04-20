@@ -12,7 +12,7 @@ import "./Navbar.css";
 
 export default function NavBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -32,7 +32,7 @@ export default function NavBar(props) {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, zIndex: "10000" }}
             onClick={openSideBar}
           >
             <MenuIcon />

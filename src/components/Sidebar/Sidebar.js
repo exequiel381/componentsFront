@@ -21,48 +21,50 @@ export default function Sidebar(props) {
   };
 
   return (
-    <div className="Sidebar">
-      <List
-        sx={{
-          width: "100%",
-          maxWidth: 360,
-          bgcolor: "#132240",
-          color: "white",
-        }}
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-        subheader={<span className="title_Nav">{props.Titulo}</span>}
-      >
-        <ListItemButton>
-          <ListItemIcon>
-            <SendIcon />
-          </ListItemIcon>
-          <ListItemText primary="Sent mail" />
-        </ListItemButton>
-        <ListItemButton>
-          <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </ListItemButton>
-        <ListItemButton onClick={handleClick}>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Starred" />
-            </ListItemButton>
-          </List>
-        </Collapse>
-      </List>
+    <div style={{ width: props.open ? "300px" : "1px" }} className="Sidebar">
+      <div style={{ display: props.open ? "block" : "none" }}>
+        <List
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            bgcolor: "#132240",
+            color: "white",
+          }}
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+          subheader={<span className="title_Nav">{props.Titulo}</span>}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary="Sent mail" />
+          </ListItemButton>
+          <ListItemButton>
+            <ListItemIcon>
+              <DraftsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Drafts" />
+          </ListItemButton>
+          <ListItemButton onClick={handleClick}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Inbox" />
+            {open ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText primary="Starred" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+        </List>
+      </div>
     </div>
   );
 }
