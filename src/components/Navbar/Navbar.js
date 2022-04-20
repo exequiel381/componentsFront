@@ -12,11 +12,16 @@ import "./Navbar.css";
 
 export default function NavBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [open, setOpen] = React.useState(true);
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
   const navigate = useNavigate();
+
+  const openSideBar = () => {
+    setOpen(!open);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -28,6 +33,7 @@ export default function NavBar(props) {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={openSideBar}
           >
             <MenuIcon />
           </IconButton>
@@ -73,6 +79,7 @@ export default function NavBar(props) {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
+      {props.Sidebar ? <Sidebar open={open}></Sidebar> : null}
     </Box>
   );
 }

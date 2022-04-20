@@ -59,6 +59,7 @@ function App() {
           settings={settings}
           name="TITULO"
           options={options}
+          Sidebar
         ></Navbar>
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
