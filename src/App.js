@@ -39,10 +39,27 @@ const pagesForNav = [
     route: "/Ipef",
   },
 ];
-const options = [
+
+const pagesForSide = [
   {
-    title: "option1",
-    route: "/option1",
+    text: "Washington",
+
+    route: "/Washington",
+  },
+  {
+    text: "SAN FERNANDO",
+
+    route: "/sanfer",
+  },
+  {
+    text: "SANTO DOMINGO",
+
+    route: "/santodom",
+  },
+  {
+    text: "IPEF",
+
+    route: "/Ipef",
   },
 ];
 
@@ -58,7 +75,7 @@ function App() {
           pages={pagesForNav}
           settings={settings}
           name="TITULO"
-          options={options}
+          pagesForSide={pagesForSide}
           Sidebar
         ></Navbar>
         <Routes>

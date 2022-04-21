@@ -18,8 +18,16 @@ import { Divider } from "@mui/material";
 export default function Sidebar(props) {
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
-  const handleClick = () => {
-    setOpen(!open);
+  const handleClick = (id) => {
+    if (document.getElementById(id).style.display === "none") {
+      document.getElementById(id).style.display = "flex";
+      document.getElementById(id + "less").style.opacity = "100%";
+      document.getElementById(id + "more").style.opacity = "0%";
+    } else {
+      document.getElementById(id).style.display = "none";
+      document.getElementById(id + "less").style.opacity = "0%";
+      document.getElementById(id + "more").style.opacity = "100%";
+    }
   };
   const handleClickRoute = (route) => {
     navigate(route);
@@ -39,45 +47,54 @@ export default function Sidebar(props) {
           aria-labelledby="nested-list-subheader"
           subheader={<span className="title_Nav">{props.Titulo}</span>}
         >
-          {props.items?.map((item) => {
-            return (
-              <>
-                <ListItemButton
-                  onClick={
-                    item.subitems ? handleClick : handleClickRoute(item.route)
-                  }
-                >
-                  <ListItemIcon>{item.icon ? item.icon : null}</ListItemIcon>
-                  <ListItemText primary={props.text} />
-                  {item.subitems ? (
-                    <>{open ? <ExpandLess /> : <ExpandMore />}</>
-                  ) : null}
+          {props.pagesForSide?.map((page) => {
+            console.log("Debo entrar 4 veces");
+            if (page.subPages) {
+              return (
+                <>
+                  <ListItemButton onClick={handleClick(page.title)}>
+                    <ListItemIcon>{page.icon}</ListItemIcon>
+                    <ListItemText primary={page.title} />
+                    <div id={page.text + "less"} style={{ opacity: "0%" }}>
+                      <ExpandLess />
+                    </div>
+                    <div id={page.text + "more"}>
+                      <ExpandMore />
+                    </div>
+                  </ListItemButton>
+
+                  <div id={page.text} style={{ display: "none" }}>
+                    <List component="div" disablePadding>
+                      {page.subPages.map((subPage) => {
+                        return (
+                          <ListItemButton
+                            onClick={handleClickRoute(page.route)}
+                          >
+                            <ListItemIcon>{subPage.icon}</ListItemIcon>
+                            <ListItemText primary={subPage.title} />
+                          </ListItemButton>
+                        );
+                      })}
+                    </List>
+                  </div>
+                </>
+              );
+            } else {
+              return (
+                <ListItemButton onClick={handleClickRoute(page.route)}>
+                  <ListItemIcon>{page.icon}</ListItemIcon>
+                  <ListItemText primary={page.title} />
                 </ListItemButton>
-                <Divider></Divider>
-              </>
-            );
+              );
+            }
           })}
-
-          {/* <ListItemButton>
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sent mail" />
-          </ListItemButton>
-
-          <ListItemButton>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Drafts" />
-          </ListItemButton> */}
 
           <ListItemButton onClick={handleClick}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
             <ListItemText primary="Inbox" />
-            {open ? <ExpandLess /> : <ExpandMore />}
+            {open ? <ExpandLess id="icono" /> : <ExpandMore />}
           </ListItemButton>
 
           <Collapse in={open} timeout="auto" unmountOnExit>
@@ -87,25 +104,6 @@ export default function Sidebar(props) {
                   <StarBorder />
                 </ListItemIcon>
                 <ListItemText primary="Starred" />
-              </ListItemButton>
-            </List>
-          </Collapse>
-
-          <ListItemButton onClick={handleClick}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Prueba" />
-            {open ? <ExpandLess /> : <ExpandMore />}
-          </ListItemButton>
-
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText primary="ppp" />
               </ListItemButton>
             </List>
           </Collapse>

@@ -23,6 +23,10 @@ export default function NavBar(props) {
     setOpen(!open);
   };
 
+  const returnHome = () => {
+    navigate("/");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -37,7 +41,12 @@ export default function NavBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            onClick={returnHome}
+          >
             {props.name}
           </Typography>
           <Box
@@ -79,7 +88,9 @@ export default function NavBar(props) {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      {props.Sidebar ? <Sidebar open={open}></Sidebar> : null}
+      {props.Sidebar ? (
+        <Sidebar open={open} pagesForSide={props.pagesForSide}></Sidebar>
+      ) : null}
     </Box>
   );
 }
