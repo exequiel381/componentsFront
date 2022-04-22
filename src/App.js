@@ -45,6 +45,18 @@ const pagesForSide = [
     text: "Washington",
 
     route: "/Washington",
+    subPages: [
+      {
+        text: "Washington",
+
+        route: "/Washington",
+      },
+      {
+        text: "Washington",
+
+        route: "/Washington",
+      },
+    ],
   },
   {
     text: "SAN FERNANDO",

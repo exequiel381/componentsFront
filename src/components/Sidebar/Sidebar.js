@@ -11,22 +11,25 @@ import SendIcon from "@mui/icons-material/Send";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import { Divider } from "@mui/material";
 
-export default function Sidebar(props) {
+const Sidebar = (props) => {
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
+
   const handleClick = (id) => {
-    if (document.getElementById(id).style.display === "none") {
-      document.getElementById(id).style.display = "flex";
-      document.getElementById(id + "less").style.opacity = "100%";
-      document.getElementById(id + "more").style.opacity = "0%";
-    } else {
-      document.getElementById(id).style.display = "none";
-      document.getElementById(id + "less").style.opacity = "0%";
-      document.getElementById(id + "more").style.opacity = "100%";
+    if (document.getElementById(id)) {
+      if (document.getElementById(id).style.display === "none") {
+        document.getElementById(id).style.display = "flex";
+        document.getElementById(id + "less").style.opacity = "100%";
+        document.getElementById(id + "more").style.opacity = "0%";
+      } else {
+        document.getElementById(id).style.display = "none";
+        document.getElementById(id + "less").style.opacity = "0%";
+        document.getElementById(id + "more").style.opacity = "100%";
+      }
     }
   };
   const handleClickRoute = (route) => {
@@ -47,14 +50,16 @@ export default function Sidebar(props) {
           aria-labelledby="nested-list-subheader"
           subheader={<span className="title_Nav">{props.Titulo}</span>}
         >
-          {props.pagesForSide?.map((page) => {
-            console.log("Debo entrar 4 veces");
-            if (page.subPages) {
+          {props.pagesForSide?.map((page, index) => {
+            if (page.subPages !== undefined) {
               return (
                 <>
-                  <ListItemButton onClick={handleClick(page.title)}>
+                  <ListItemButton
+                    key={index}
+                    onClick={() => handleClick(page.text)}
+                  >
                     <ListItemIcon>{page.icon}</ListItemIcon>
-                    <ListItemText primary={page.title} />
+                    <ListItemText primary={page.text} />
                     <div id={page.text + "less"} style={{ opacity: "0%" }}>
                       <ExpandLess />
                     </div>
@@ -67,11 +72,9 @@ export default function Sidebar(props) {
                     <List component="div" disablePadding>
                       {page.subPages.map((subPage) => {
                         return (
-                          <ListItemButton
-                            onClick={handleClickRoute(page.route)}
-                          >
+                          <ListItemButton>
                             <ListItemIcon>{subPage.icon}</ListItemIcon>
-                            <ListItemText primary={subPage.title} />
+                            <ListItemText primary={subPage.text} />
                           </ListItemButton>
                         );
                       })}
@@ -81,15 +84,15 @@ export default function Sidebar(props) {
               );
             } else {
               return (
-                <ListItemButton onClick={handleClickRoute(page.route)}>
+                <ListItemButton onClick={() => handleClickRoute(page.route)}>
                   <ListItemIcon>{page.icon}</ListItemIcon>
-                  <ListItemText primary={page.title} />
+                  <ListItemText primary={page.text} />
                 </ListItemButton>
               );
             }
           })}
 
-          <ListItemButton onClick={handleClick}>
+          {/* <ListItemButton onClick={handleClick}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
@@ -106,9 +109,11 @@ export default function Sidebar(props) {
                 <ListItemText primary="Starred" />
               </ListItemButton>
             </List>
-          </Collapse>
+          </Collapse> */}
         </List>
       </div>
     </div>
   );
-}
+};
+
+export default Sidebar;
