@@ -75,6 +75,8 @@ const pagesForSide = [
   },
 ];
 
+const rightButtons = [{ text: "LOGIN" }];
+
 function App() {
   const [loged, setLoged] = useState(false);
   const settings = loged ? ["Dashboard", "Logout"] : ["Register"];
@@ -85,6 +87,7 @@ function App() {
       <Router>
         <Navbar
           pages={pagesForNav}
+          rightButtons={rightButtons}
           settings={settings}
           name="TITULO"
           pagesForSide={pagesForSide}

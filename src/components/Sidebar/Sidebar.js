@@ -16,9 +16,7 @@ import "./Sidebar.css";
 import { Divider } from "@mui/material";
 
 const Sidebar = (props) => {
-  const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
-
   const handleClick = (id) => {
     if (document.getElementById(id)) {
       if (document.getElementById(id).style.display === "none") {
@@ -59,8 +57,11 @@ const Sidebar = (props) => {
                     onClick={() => handleClick(page.text)}
                   >
                     <ListItemIcon>{page.icon}</ListItemIcon>
-                    <ListItemText primary={page.text} />
-                    <div id={page.text + "less"} style={{ opacity: "0%" }}>
+                    <h3>{page.text}</h3>
+                    <div
+                      id={page.text + "less"}
+                      style={{ opacity: "0%", marginLeft: "20%" }}
+                    >
                       <ExpandLess />
                     </div>
                     <div id={page.text + "more"}>
@@ -68,13 +69,16 @@ const Sidebar = (props) => {
                     </div>
                   </ListItemButton>
 
-                  <div id={page.text} style={{ display: "none" }}>
+                  <div
+                    id={page.text}
+                    style={{ display: "none", marginLeft: "20%" }}
+                  >
                     <List component="div" disablePadding>
-                      {page.subPages.map((subPage) => {
+                      {page.subPages.map((subPage, index) => {
                         return (
-                          <ListItemButton>
+                          <ListItemButton sx={{ pl: 0 }} key={index}>
                             <ListItemIcon>{subPage.icon}</ListItemIcon>
-                            <ListItemText primary={subPage.text} />
+                            <h3>{subPage.text}</h3>
                           </ListItemButton>
                         );
                       })}
@@ -84,9 +88,12 @@ const Sidebar = (props) => {
               );
             } else {
               return (
-                <ListItemButton onClick={() => handleClickRoute(page.route)}>
+                <ListItemButton
+                  onClick={() => handleClickRoute(page.route)}
+                  key={index}
+                >
                   <ListItemIcon>{page.icon}</ListItemIcon>
-                  <ListItemText primary={page.text} />
+                  <h3>{page.text}</h3>
                 </ListItemButton>
               );
             }
