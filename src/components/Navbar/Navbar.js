@@ -44,7 +44,7 @@ export default function NavBar(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1 }}
+            sx={{ flexGrow: 1, fontWeight: "bold" }}
             onClick={returnHome}
           >
             {props.name}

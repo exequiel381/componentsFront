@@ -28,7 +28,7 @@ const Sidebar = (props) => {
   };
 
   return (
-    <div style={{ width: props.open ? "300px" : "1px" }} className="Sidebar">
+    <div style={{ width: props.open ? "350px" : "1px" }} className="Sidebar">
       <div style={{ display: props.open ? "block" : "none" }}>
         <List
           sx={{
