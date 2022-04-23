@@ -76,7 +76,11 @@ const Sidebar = (props) => {
                     <List component="div" disablePadding>
                       {page.subPages.map((subPage, index) => {
                         return (
-                          <ListItemButton sx={{ pl: 0 }} key={index}>
+                          <ListItemButton
+                            sx={{ pl: 0 }}
+                            key={index}
+                            onClick={() => handleClickRoute(page.route)}
+                          >
                             <ListItemIcon>{subPage.icon}</ListItemIcon>
                             <h3>{subPage.text}</h3>
                           </ListItemButton>

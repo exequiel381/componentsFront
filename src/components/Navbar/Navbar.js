@@ -86,7 +86,11 @@ export default function NavBar(props) {
             ))}
           </Box>
           {props.rightButtons?.map((button) => {
-            return <Button color="inherit">{button.text}</Button>;
+            return (
+              <Button color="inherit" onClick={() => button.onClick}>
+                {button.text}
+              </Button>
+            );
           })}
         </Toolbar>
       </AppBar>
