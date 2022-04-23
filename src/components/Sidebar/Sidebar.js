@@ -1,16 +1,9 @@
 import * as React from "react";
-import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import SendIcon from "@mui/icons-material/Send";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
 import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import { Divider } from "@mui/material";
@@ -46,62 +39,69 @@ const Sidebar = (props) => {
           }}
           component="nav"
           aria-labelledby="nested-list-subheader"
-          subheader={<span className="title_Nav">{props.Titulo}</span>}
+          subheader={<span className="title_Nav">{props.sideTitle}</span>}
         >
-          {props.pagesForSide?.map((page, index) => {
-            if (page.subPages !== undefined) {
-              return (
-                <>
-                  <ListItemButton
-                    key={index}
-                    onClick={() => handleClick(page.text)}
-                  >
-                    <ListItemIcon>{page.icon}</ListItemIcon>
-                    <h3>{page.text}</h3>
-                    <div
-                      id={page.text + "less"}
-                      style={{ opacity: "0%", marginLeft: "20%" }}
+          <>
+            <Divider></Divider>
+            {props.pagesForSide?.map((page, index) => {
+              if (page.subPages !== undefined) {
+                return (
+                  <>
+                    <ListItemButton
+                      key={index}
+                      onClick={() => handleClick(page.text)}
                     >
-                      <ExpandLess />
-                    </div>
-                    <div id={page.text + "more"}>
-                      <ExpandMore />
-                    </div>
-                  </ListItemButton>
+                      <ListItemIcon>{page.icon}</ListItemIcon>
+                      <h3>{page.text}</h3>
+                      <div
+                        id={page.text + "less"}
+                        style={{ opacity: "0%", marginLeft: "20%" }}
+                      >
+                        <ExpandLess />
+                      </div>
+                      <div id={page.text + "more"}>
+                        <ExpandMore />
+                      </div>
+                    </ListItemButton>
+                    <Divider></Divider>
 
-                  <div
-                    id={page.text}
-                    style={{ display: "none", marginLeft: "20%" }}
-                  >
-                    <List component="div" disablePadding>
-                      {page.subPages.map((subPage, index) => {
-                        return (
-                          <ListItemButton
-                            sx={{ pl: 0 }}
-                            key={index}
-                            onClick={() => handleClickRoute(page.route)}
-                          >
-                            <ListItemIcon>{subPage.icon}</ListItemIcon>
-                            <h3>{subPage.text}</h3>
-                          </ListItemButton>
-                        );
-                      })}
-                    </List>
-                  </div>
-                </>
-              );
-            } else {
-              return (
-                <ListItemButton
-                  onClick={() => handleClickRoute(page.route)}
-                  key={index}
-                >
-                  <ListItemIcon>{page.icon}</ListItemIcon>
-                  <h3>{page.text}</h3>
-                </ListItemButton>
-              );
-            }
-          })}
+                    <div
+                      id={page.text}
+                      style={{ display: "none", marginLeft: "20%" }}
+                    >
+                      <List component="div" disablePadding>
+                        {page.subPages.map((subPage, index) => {
+                          return (
+                            <ListItemButton
+                              sx={{ pl: 0 }}
+                              key={index}
+                              onClick={() => handleClickRoute(page.route)}
+                            >
+                              <ListItemIcon>{subPage.icon}</ListItemIcon>
+                              <h3>{subPage.text}</h3>
+                            </ListItemButton>
+                          );
+                        })}
+                      </List>
+                    </div>
+                  </>
+                );
+              } else {
+                return (
+                  <>
+                    <ListItemButton
+                      onClick={() => handleClickRoute(page.route)}
+                      key={index}
+                    >
+                      <ListItemIcon>{page.icon}</ListItemIcon>
+                      <h3>{page.text}</h3>
+                    </ListItemButton>
+                    <Divider></Divider>
+                  </>
+                );
+              }
+            })}
+          </>
 
           {/* <ListItemButton onClick={handleClick}>
             <ListItemIcon>

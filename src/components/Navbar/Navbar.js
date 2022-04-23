@@ -95,7 +95,11 @@ export default function NavBar(props) {
         </Toolbar>
       </AppBar>
       {props.Sidebar ? (
-        <Sidebar open={open} pagesForSide={props.pagesForSide}></Sidebar>
+        <Sidebar
+          open={open}
+          pagesForSide={props.pagesForSide}
+          sideTitle={props.sideTitle}
+        ></Sidebar>
       ) : null}
     </Box>
   );

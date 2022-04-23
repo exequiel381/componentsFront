@@ -8,74 +8,11 @@ import {
 //import createHistory from "history/createBrowserHistory"; //Eliminar # de la ruta
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/home";
-import washington from "./images/Washington.png";
-import sanfer from "./images/SANFERNANDO.png";
-import santodom from "./images/santodomingo.png";
-import ipef from "./images/IPEF.png";
 import Prueba from "./pages/prueba";
 import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./temaConfig";
 import { useState } from "react";
-
-const pagesForNav = [
-  {
-    title: "Washington",
-    image: washington,
-    route: "/Washington",
-  },
-  {
-    title: "SAN FERNANDO",
-    image: sanfer,
-    route: "/sanfer",
-  },
-  {
-    title: "SANTO DOMINGO",
-    image: santodom,
-    route: "/santodom",
-  },
-  {
-    title: "IPEF",
-    image: ipef,
-    route: "/Ipef",
-  },
-];
-
-const pagesForSide = [
-  {
-    text: "Washington",
-
-    route: "/Washington",
-    subPages: [
-      {
-        text: "Washington",
-
-        route: "/Washington",
-      },
-      {
-        text: "Washington",
-
-        route: "/Washington",
-      },
-    ],
-  },
-  {
-    text: "SAN FERNANDO",
-
-    route: "/sanfer",
-  },
-  {
-    text: "SANTO DOMINGO",
-
-    route: "/santodom",
-  },
-  {
-    text: "IPEF",
-
-    route: "/Ipef",
-  },
-];
-
-const rightButtons = [{ text: "LOGIN" }];
+import { pagesForNav, rightButtons, pagesForSide } from "./ColectionsExports";
 
 function App() {
   const [loged, setLoged] = useState(false);
@@ -90,6 +27,7 @@ function App() {
           rightButtons={rightButtons}
           settings={settings}
           name="TITULO"
+          sideTitle={"TITULO"}
           pagesForSide={pagesForSide}
           Sidebar
         ></Navbar>
