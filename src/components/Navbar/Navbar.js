@@ -36,7 +36,7 @@ export default function NavBar(props) {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2, zIndex: "10000" }}
+            sx={{ mr: 2, zIndex: "2" }}
             onClick={openSideBar}
           >
             <MenuIcon />

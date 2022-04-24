@@ -17,6 +17,9 @@ const MenuProps = {
 };
 
 export default function DropDown(props) {
+
+  let NameId = props.NameId ? props.NameId : "id";
+
   return (
     <div>
       <FormControl sx={{ width: props.width }}>
@@ -29,9 +32,9 @@ export default function DropDown(props) {
           input={<OutlinedInput label={props.label} />}
           MenuProps={MenuProps}
         >
-          {props.items.map((name) => (
-            <MenuItem key={name.id} value={name.id}>
-              {name.descripcion}
+          {props.items.map((item) => (
+            <MenuItem key={item[NameId]} value={item[NameId]}>
+              {item.descripcion}
             </MenuItem>
           ))}
         </Select>
