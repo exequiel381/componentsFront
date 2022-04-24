@@ -99,6 +99,7 @@ export default function NavBar(props) {
           open={open}
           pagesForSide={props.pagesForSide}
           sideTitle={props.sideTitle}
+          setOpen={setOpen}
         ></Sidebar>
       ) : null}
     </Box>

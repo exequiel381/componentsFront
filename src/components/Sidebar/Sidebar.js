@@ -25,6 +25,7 @@ const Sidebar = (props) => {
   };
   const handleClickRoute = (route) => {
     navigate(route);
+    props.setOpen(false);
   };
 
   return (
