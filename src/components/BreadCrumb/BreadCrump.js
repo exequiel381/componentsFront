@@ -10,8 +10,9 @@ const BreadCrumb = (props) => {
         return (
           <div key={index}>
             <Link to={rootPath + route.path} className="Links">
-              {route.title + " > "}
+              {route.title}
             </Link>
+            {" > "}
           </div>
         );
       })}
