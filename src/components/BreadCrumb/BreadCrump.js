@@ -1,22 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { rootPath } from "../../App";
+import "./BreadCrumb.css";
 
-const SDDSBreadCrumb = (props) => {
+const BreadCrumb = (props) => {
   return (
-    <div className="sdds-breadcrumb">
+    <div className="contenedor">
       {props.routes?.map((route, index) => {
         return (
-          <div key={index} className="sdds-breadcrumb-item">
-            <Link to={rootPath + route.path}>{route.title}</Link>
+          <div key={index}>
+            <Link to={rootPath + route.path} className="Links">
+              {route.title + " > "}
+            </Link>
           </div>
         );
       })}
-      <div className="sdds-breadcrumb-item sdds-breadcrumb-item-current">
-        <a aria-current="page">{props.currentRoute}</a>
+      <div>
+        <a className="Actual" aria-current="page">
+          {props.currentRoute}
+        </a>
       </div>
     </div>
   );
 };
 
-export default SDDSBreadCrumb;
+export default BreadCrumb;

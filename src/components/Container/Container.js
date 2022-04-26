@@ -10,7 +10,7 @@ const Container = (props) => {
         marginLeft: props.marginLeft ? props.marginLeft : "",
         marginRight: props.marginRight ? props.marginRight : "",
         marginBottom: props.marginBottom ? props.marginBottom : "",
-        paddingTop: props.paddingTop ? props.paddingTop : "20px",
+        paddingTop: props.paddingTop ? props.paddingTop : "",
         paddingBottom: props.paddingBottom ? props.paddingBottom : "20px",
         paddingLeft: props.paddingLeft ? props.paddingLeft : "50px",
         paddingRight: props.paddingRight ? props.paddingRight : "50px",

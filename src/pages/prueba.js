@@ -3,6 +3,7 @@ import Container from "../components/Container/Container";
 import DropDown from "../components/Dropdown/Dropdown";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import BreadCrumb from "../components/BreadCrumb/BreadCrump";
 
 const valuesDrop = [
   {
@@ -26,6 +27,16 @@ const styles = (theme) => ({
 
 const Prueba = () => {
   const [value, setValue] = React.useState("");
+  const routes = [
+    {
+      path: "/pag",
+      title: "pag",
+    },
+    {
+      path: "/pag",
+      title: "pag",
+    },
+  ];
 
   React.useEffect(() => {
     console.log(value);
@@ -33,15 +44,20 @@ const Prueba = () => {
 
   return (
     <Container>
-      <DropDown
-        items={valuesDrop}
-        value={value}
-        label="Prueba"
-        set={setValue}
-        width="30%"
-        NameId="idPrueba"
-      ></DropDown>
-      <div style={{ margin: "2%" }}>
+      <div name="BreadCrumb" style={{ margin: "2%" }}>
+        <BreadCrumb currentRoute="Actual" routes={routes}></BreadCrumb>
+      </div>
+      <div name="Dropdown">
+        <DropDown
+          items={valuesDrop}
+          value={value}
+          label="Prueba"
+          set={setValue}
+          width="30%"
+          NameId="idPrueba"
+        ></DropDown>
+      </div>
+      <div name="Buttons" style={{ margin: "2%" }}>
         <Button
           sx={{ width: "500px", height: "100px" }}
           onClick={() => {
@@ -63,7 +79,7 @@ const Prueba = () => {
         <Button size="medium">Medium</Button>
         <Button size="large">Large</Button>
       </div>
-      <div style={{ margin: "2%" }}>
+      <div name="TextFields" style={{ margin: "2%" }}>
         <TextField
           required
           id="filled-required"

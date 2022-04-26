@@ -14,6 +14,7 @@ import Theme from "./temaConfig";
 import { useState } from "react";
 import { pagesForNav, rightButtons, pagesForSide } from "./ColectionsExports";
 
+export const rootPath = "/";
 function App() {
   const [loged, setLoged] = useState(false);
   const settings = loged ? ["Dashboard", "Logout"] : ["Register"];
