@@ -1,9 +1,11 @@
 import * as React from "react";
-import Container from "../components/Container/Container";
-import DropDown from "../components/Dropdown/Dropdown";
+import Container from "../../components/Container/Container";
+import DropDown from "../../components/Dropdown/Dropdown";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import BreadCrumb from "../components/BreadCrumb/BreadCrump";
+import BreadCrumb from "../../components/BreadCrumb/BreadCrump";
+import Table from "../../components/Table/Table";
+import "./prueba.css";
 
 const valuesDrop = [
   {
@@ -42,6 +44,70 @@ const Prueba = () => {
     console.log(value);
   }, [value]);
 
+  const colums = [
+    {
+      key: "primera",
+      text: "primera",
+    },
+    {
+      key: "segunda",
+      text: "segunda",
+    },
+  ];
+
+  const data = [
+    {
+      primera: "valor1",
+      segunda: "xvalor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+    {
+      primera: "vvalor1",
+      segunda: "valor2",
+    },
+  ];
+
+  const rowsToColor = [
+    { id: "row-0", color: "red" }, //id de la fila (siempre es row-indiceData)
+    { id: "row-3", color: "yellow" },
+  ];
+  const columnsToColor = ["0", "1"];
+
   return (
     <Container>
       <div name="BreadCrumb" style={{ margin: "2%" }}>
@@ -79,7 +145,7 @@ const Prueba = () => {
         <Button size="medium">Medium</Button>
         <Button size="large">Large</Button>
       </div>
-      <div name="TextFields" style={{ margin: "2%" }}>
+      <div className="Pruebas_TextFields" style={{ margin: "2%" }}>
         <TextField
           required
           id="filled-required"
@@ -145,6 +211,17 @@ const Prueba = () => {
           color="warning"
           focused
         />
+      </div>
+      <div name="Table">
+        <Table
+          columns={colums}
+          data={data}
+          width="70%"
+          height="300px"
+          striped
+          rowsToColor={rowsToColor}
+          columnsToColor={columnsToColor}
+        ></Table>
       </div>
     </Container>
   );

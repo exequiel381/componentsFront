@@ -8,7 +8,7 @@ import {
 //import createHistory from "history/createBrowserHistory"; //Eliminar # de la ruta
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/home";
-import Prueba from "./pages/prueba";
+import Prueba from "./pages/Pruebas/prueba";
 import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./temaConfig";
 import { useState } from "react";

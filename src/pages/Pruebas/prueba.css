@@ -1,0 +1,6 @@
+.Pruebas_TextFields{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(70px, auto);
+}
