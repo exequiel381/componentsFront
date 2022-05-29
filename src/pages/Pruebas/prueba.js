@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import BreadCrumb from "../../components/BreadCrumb/BreadCrump";
 import Table from "../../components/Table/Table";
 import "./prueba.css";
+import Loader from "../../components/Loader/Loader";
+import ModalComponent from "../../components/Modal/Modal";
 
 const valuesDrop = [
   {
@@ -29,6 +31,7 @@ const styles = (theme) => ({
 
 const Prueba = () => {
   const [value, setValue] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(true);
   const routes = [
     {
       path: "/pag",
@@ -222,6 +225,14 @@ const Prueba = () => {
           rowsToColor={rowsToColor}
           columnsToColor={columnsToColor}
         ></Table>
+      </div>
+      <div name="Spinner">
+        <Loader></Loader>
+      </div>
+      <div name="Modal">
+        <ModalComponent open={openModal} setOpen={setOpenModal}>
+          <h1>HOLAS</h1>
+        </ModalComponent>
       </div>
     </Container>
   );

@@ -1,14 +1,16 @@
 import React from "react";
 import "./Loader.css";
 
-function Loader() {
+function Loader(props) {
   return (
     <>
       <div className="center-items">
         <div className="loader"></div>
       </div>
       <div className="center-items">
-        <div className="textLoader">...Loading</div>
+        <div className="textLoader">
+          {props.text ? props.text : "...Loading"}
+        </div>
       </div>
     </>
   );
