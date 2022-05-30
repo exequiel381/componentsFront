@@ -17,7 +17,6 @@ const MenuProps = {
 };
 
 export default function DropDown(props) {
-
   let NameId = props.NameId ? props.NameId : "id";
 
   return (
@@ -33,8 +32,12 @@ export default function DropDown(props) {
           MenuProps={MenuProps}
         >
           {props.items.map((item) => (
-            <MenuItem key={item[NameId]} value={item[NameId]}>
-              {item.descripcion}
+            <MenuItem
+              key={item[NameId]}
+              value={item[NameId]}
+              disabled={item.disabled}
+            >
+              {item.text}
             </MenuItem>
           ))}
         </Select>

@@ -12,11 +12,12 @@ import ModalComponent from "../../components/Modal/Modal";
 const valuesDrop = [
   {
     idPrueba: 1,
-    descripcion: "primero",
+    text: "primero",
+    disabled: true,
   },
   {
     idPrueba: 2,
-    descripcion: "segundo",
+    text: "segundo",
   },
 ];
 
@@ -230,7 +231,11 @@ const Prueba = () => {
         <Loader></Loader>
       </div>
       <div name="Modal">
-        <ModalComponent open={openModal} setOpen={setOpenModal}>
+        <ModalComponent
+          open={openModal}
+          setOpen={setOpenModal}
+          type={"loading"}
+        >
           <h1>HOLAS</h1>
         </ModalComponent>
       </div>

@@ -9,3 +9,10 @@
     text-shadow: 1px 1px 1px ;
     font-size: 25px;
 }
+
+.modal_buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    border-top: solid 2px;
+}
