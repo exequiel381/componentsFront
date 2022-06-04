@@ -7,12 +7,4 @@
       
   }
 
-  .loader {
-    border: 16px solid #d1c4c480; /* Light grey */
-    border-top: 16px solid #00233b; /* Blue */
-    border-bottom: 16px solid #00233b; /* Blue */
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin .7s ease-out infinite;
-  }
+  

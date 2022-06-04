@@ -1,6 +1,7 @@
 import * as React from "react";
 import Container from "../../components/Container/Container";
 import DropDown from "../../components/Dropdown/Dropdown";
+import DropDownText from "../../components/CountriesSelect/CountriesSelect";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import BreadCrumb from "../../components/BreadCrumb/BreadCrump";
@@ -8,6 +9,8 @@ import Table from "../../components/Table/Table";
 import "./prueba.css";
 import Loader from "../../components/Loader/Loader";
 import ModalComponent from "../../components/Modal/Modal";
+import Tooltip from "../../components/ToolTip/Tooltip";
+var _ = require("lodash");
 
 const valuesDrop = [
   {
@@ -29,9 +32,86 @@ const styles = (theme) => ({
     },
   },
 });
+const colums = [
+  {
+    key: "primera",
+    text: "primera",
+  },
+  {
+    key: "segunda",
+    text: "segunda",
+  },
+];
+
+const data = [
+  {
+    primera: "valor1",
+    segunda: "xvalor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+  {
+    primera: "vvalor1",
+    segunda: "valor2",
+  },
+];
+
+const rowsToColor = [
+  { id: "row-0", color: "red" }, //id de la fila (siempre es row-indiceData)
+  { id: "row-3", color: "yellow" },
+];
+const columnsToColor = ["0", "1"];
+
+const users = [
+  { group: "editor", name: "Adam", age: 23 },
+  { group: "admin", name: "John", age: 28 },
+  { group: "editor", name: "William", age: 34 },
+  { group: "admin", name: "Oliver", age: 28 },
+  { group: "editor", name: "Javier", age: 22 },
+  { group: "admin", name: "Exequiel", age: 30 },
+  { group: "admin", name: "Exequiel", age: 25 },
+  { group: "admin", name: "Exequiel", age: 29 },
+  { group: "admin", name: "Exequiel", age: 20 },
+  { group: "editor", name: "Joaquin", age: 15 },
+  { group: "admin", name: "Carlos", age: 50 },
+];
 
 const Prueba = () => {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(2);
   const [openModal, setOpenModal] = React.useState(true);
   const routes = [
     {
@@ -48,69 +128,12 @@ const Prueba = () => {
     console.log(value);
   }, [value]);
 
-  const colums = [
-    {
-      key: "primera",
-      text: "primera",
-    },
-    {
-      key: "segunda",
-      text: "segunda",
-    },
-  ];
-
-  const data = [
-    {
-      primera: "valor1",
-      segunda: "xvalor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-    {
-      primera: "vvalor1",
-      segunda: "valor2",
-    },
-  ];
-
-  const rowsToColor = [
-    { id: "row-0", color: "red" }, //id de la fila (siempre es row-indiceData)
-    { id: "row-3", color: "yellow" },
-  ];
-  const columnsToColor = ["0", "1"];
+  //Tratamiento de listas
+  React.useEffect(() => {
+    let sorted = _.orderBy(users, ["name", "age"], ["asc", "desc"]);
+    let grouping = _.groupBy(users, "age");
+    let sumed = _.sumBy(users, "age");
+  }, []);
 
   return (
     <Container>
@@ -126,6 +149,7 @@ const Prueba = () => {
           width="30%"
           NameId="idPrueba"
         ></DropDown>
+        <DropDownText Id="id"></DropDownText>
       </div>
       <div name="Buttons" style={{ margin: "2%" }}>
         <Button
@@ -238,6 +262,9 @@ const Prueba = () => {
         >
           <h1>HOLAS</h1>
         </ModalComponent>
+      </div>
+      <div name="ToolTip">
+        <Tooltip type="icon" placement="top" title="TEST"></Tooltip>
       </div>
     </Container>
   );

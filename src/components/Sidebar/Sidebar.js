@@ -29,7 +29,10 @@ const Sidebar = (props) => {
   };
 
   return (
-    <div style={{ width: props.open ? "350px" : "1px" }} className="Sidebar">
+    <div
+      style={{ width: props.open ? "350px" : "1px", zIndex: 30 }}
+      className="Sidebar"
+    >
       <div style={{ display: props.open ? "block" : "none" }}>
         <List
           sx={{
@@ -47,7 +50,7 @@ const Sidebar = (props) => {
             {props.pagesForSide?.map((page, index) => {
               if (page.subPages !== undefined) {
                 return (
-                  <>
+                  <React.Fragment key={page.Text + "subroute" + index}>
                     <ListItemButton
                       key={index}
                       onClick={() => handleClick(page.text)}
@@ -73,23 +76,24 @@ const Sidebar = (props) => {
                       <List component="div" disablePadding>
                         {page.subPages.map((subPage, index) => {
                           return (
-                            <ListItemButton
-                              sx={{ pl: 0 }}
-                              key={index}
-                              onClick={() => handleClickRoute(page.route)}
-                            >
-                              <ListItemIcon>{subPage.icon}</ListItemIcon>
-                              <h3>{subPage.text}</h3>
-                            </ListItemButton>
+                            <React.Fragment key={subPage.text + index}>
+                              <ListItemButton
+                                sx={{ pl: 0 }}
+                                onClick={() => handleClickRoute(page.route)}
+                              >
+                                <ListItemIcon>{subPage.icon}</ListItemIcon>
+                                <h3>{subPage.text}</h3>
+                              </ListItemButton>
+                            </React.Fragment>
                           );
                         })}
                       </List>
                     </div>
-                  </>
+                  </React.Fragment>
                 );
               } else {
                 return (
-                  <>
+                  <React.Fragment key={page.Text + "route" + index}>
                     <ListItemButton
                       onClick={() => handleClickRoute(page.route)}
                       key={index}
@@ -98,30 +102,11 @@ const Sidebar = (props) => {
                       <h3>{page.text}</h3>
                     </ListItemButton>
                     <Divider></Divider>
-                  </>
+                  </React.Fragment>
                 );
               }
             })}
           </>
-
-          {/* <ListItemButton onClick={handleClick}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inbox" />
-            {open ? <ExpandLess id="icono" /> : <ExpandMore />}
-          </ListItemButton>
-
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText primary="Starred" />
-              </ListItemButton>
-            </List>
-          </Collapse> */}
         </List>
       </div>
     </div>

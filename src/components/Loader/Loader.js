@@ -1,11 +1,12 @@
 import React from "react";
+import { StyleLoader } from "../StyledComponents/StyleLoader";
 import "./Loader.css";
 
 function Loader(props) {
   return (
     <>
       <div className="center-items">
-        <div className="loader"></div>
+        <StyleLoader className="loader"></StyleLoader>
       </div>
       <div className="center-items">
         <div className="textLoader">

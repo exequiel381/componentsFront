@@ -36,7 +36,7 @@ export default function NavBar(props) {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2, zIndex: "2" }}
+            sx={{ mr: 2, zIndex: "40" }}
             onClick={openSideBar}
           >
             <MenuIcon />
@@ -56,8 +56,8 @@ export default function NavBar(props) {
               alignItems: "center",
             }}
           >
-            {props.pages.map((page) => (
-              <div className="NavBar_Buttons">
+            {props.pages.map((page, index) => (
+              <div className="NavBar_Buttons" key={page.title + index}>
                 <Button
                   key={page.title}
                   onClick={() => {
@@ -85,9 +85,13 @@ export default function NavBar(props) {
               </div>
             ))}
           </Box>
-          {props.rightButtons?.map((button) => {
+          {props.rightButtons?.map((button, index) => {
             return (
-              <Button color="inherit" onClick={() => button.onClick}>
+              <Button
+                key={button.text + index}
+                color="inherit"
+                onClick={() => button.onClick}
+              >
                 {button.text}
               </Button>
             );
