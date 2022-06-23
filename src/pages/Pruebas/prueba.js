@@ -10,6 +10,12 @@ import "./prueba.css";
 import Loader from "../../components/Loader/Loader";
 import ModalComponent from "../../components/Modal/Modal";
 import Tooltip from "../../components/ToolTip/Tooltip";
+import {
+  faWrench,
+  faPlus,
+  faTrashAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 var _ = require("lodash");
 
 const valuesDrop = [
@@ -104,15 +110,22 @@ const users = [
   { group: "editor", name: "Javier", age: 22 },
   { group: "admin", name: "Exequiel", age: 30 },
   { group: "admin", name: "Exequiel", age: 25 },
+  { group: "admin", name: "Exequiel", age: 25 },
   { group: "admin", name: "Exequiel", age: 29 },
   { group: "admin", name: "Exequiel", age: 20 },
   { group: "editor", name: "Joaquin", age: 15 },
   { group: "admin", name: "Carlos", age: 50 },
 ];
 
-const Prueba = () => {
+const Prueba = (props) => {
   const [value, setValue] = React.useState(2);
-  const [openModal, setOpenModal] = React.useState(true);
+  const [modalProps, setModalProps] = React.useState({
+    openModal: false,
+    text: "",
+    header: "Confirmacion",
+    onConfirm: () => {},
+  });
+
   const routes = [
     {
       path: "/pag",
@@ -121,6 +134,20 @@ const Prueba = () => {
     {
       path: "/pag",
       title: "pag",
+    },
+  ];
+
+  const viewDetail = (id) => {
+    alert("Hola soy", id);
+  };
+
+  const buttons = [
+    {
+      key: "viewDetail",
+      text: "Check",
+      icon: faWrench,
+      color: "success", //error, primary(por defecto)
+      behaviour: viewDetail,
     },
   ];
 
@@ -133,10 +160,12 @@ const Prueba = () => {
     let sorted = _.orderBy(users, ["name", "age"], ["asc", "desc"]);
     let grouping = _.groupBy(users, "age");
     let sumed = _.sumBy(users, "age");
+    let uniq = _.uniqBy(users, "name");
   }, []);
 
   return (
     <Container>
+      <h1>{props.test}</h1>
       <div name="BreadCrumb" style={{ margin: "2%" }}>
         <BreadCrumb currentRoute="Actual" routes={routes}></BreadCrumb>
       </div>
@@ -242,6 +271,7 @@ const Prueba = () => {
       </div>
       <div name="Table">
         <Table
+          idColumn="primera"
           columns={colums}
           data={data}
           width="70%"
@@ -249,6 +279,7 @@ const Prueba = () => {
           striped
           rowsToColor={rowsToColor}
           columnsToColor={columnsToColor}
+          iconButtons={buttons}
         ></Table>
       </div>
       <div name="Spinner">
@@ -256,11 +287,13 @@ const Prueba = () => {
       </div>
       <div name="Modal">
         <ModalComponent
-          open={openModal}
-          setOpen={setOpenModal}
-          type={"loading"}
+          open={modalProps.openModal}
+          setModalProps={setModalProps}
+          type={"confirmation"}
+          header={modalProps.header}
+          onConfirm={modalProps.onConfirm}
         >
-          <h1>HOLAS</h1>
+          {modalProps.text}
         </ModalComponent>
       </div>
       <div name="ToolTip">
@@ -270,4 +303,7 @@ const Prueba = () => {
   );
 };
 
+Prueba.defaultProps = {
+  test: "TEST",
+};
 export default Prueba;
