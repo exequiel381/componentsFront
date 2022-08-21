@@ -8,6 +8,7 @@ export const StyleLoader = styled.div`
   width: 80px;
   height: 80px;
   animation: spin 0.7s ease-out infinite;
+  /* color: ${(props) => (props.isPink ? "black" : "white")}; */
   /* transition: 1s; */
 
   /* &:hover {

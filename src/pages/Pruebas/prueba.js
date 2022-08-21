@@ -15,7 +15,13 @@ import {
   faPlus,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
+
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
+import { StyleLoader } from "../../components/StyledComponents/StyleLoader";
+import { showTime } from "../../utils/utils";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import IconLink from "../../components/IconLink/IconLink";
 var _ = require("lodash");
 
 const valuesDrop = [
@@ -118,6 +124,7 @@ const users = [
 ];
 
 const Prueba = (props) => {
+  const hora = React.useRef();
   const [value, setValue] = React.useState(2);
   const [modalProps, setModalProps] = React.useState({
     openModal: false,
@@ -162,13 +169,25 @@ const Prueba = (props) => {
     let sumed = _.sumBy(users, "age");
     let uniq = _.uniqBy(users, "name");
   }, []);
-
+  showTime(hora);
   return (
     <Container>
       <h1>{props.test}</h1>
       <div name="BreadCrumb" style={{ margin: "2%" }}>
         <BreadCrumb currentRoute="Actual" routes={routes}></BreadCrumb>
       </div>
+      <div
+        name="Clock"
+        id="clockDisplay"
+        className="clock"
+        onLoad={showTime}
+      ></div>
+
+      <div id="redes">
+        <IconLink type={"Facebook"} to={"#"}></IconLink>
+        <IconLink type={"WhatsApp"} to={"#"} Text="3814726483"></IconLink>
+      </div>
+
       <div name="Dropdown">
         <DropDown
           items={valuesDrop}
@@ -285,6 +304,7 @@ const Prueba = (props) => {
       <div name="Spinner">
         <Loader></Loader>
       </div>
+
       <div name="Modal">
         <ModalComponent
           open={modalProps.openModal}

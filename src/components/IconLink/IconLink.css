@@ -1,0 +1,53 @@
+/* facebook */
+.Link_Div:hover{
+    opacity: 0.8;
+    background-color: rgba(63, 61, 92, 0.219);
+}
+
+.link .i{
+    color: white;
+    font-size: 1.7em;
+    transition: all 0.4s;
+}
+
+.link:hover .i{
+    font-size: 2em;
+    color: #2013dd;
+}
+
+
+.Link_Div{
+    background-color: rgba(17, 0, 255, 0.61);
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 50%;
+    padding: 1% 16px 1% 16px;
+}
+
+/* WHATSAPP */
+.Link_Div_wp:hover{
+    opacity: 0.8;
+    background-color: rgba(5, 5, 5, 0.753);
+}
+
+.link_wp .i{
+    color: white;
+    font-size: 1.7em;
+    transition: all 0.4s;
+}
+
+.link_wp:hover .i{
+    font-size: 2em;
+    color: #17ff02;
+}
+
+
+.Link_Div_wp{
+    background-color: rgba(48, 170, 32, 0.993);
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 50%;
+}
+

@@ -4,3 +4,9 @@
     grid-gap: 10px;
     grid-auto-rows: minmax(70px, auto);
 }
+
+.clock{
+    margin: 2%;
+    font-weight: bold;
+    font-size: xx-large;
+}
